@@ -1,26 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { publicRoutes, privateRoutes, authRoutes } from "./routers";
+import { AuthLayout, LoggedInLayout } from "./utility/AuthLayout";
+import './css/App.css';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+      <BrowserRouter>
+            <Routes>
+              {publicRoutes.map((route: any, index: any) => (
+                <Route
+                  key={index}
+                  path={route.route}
+                  element={<route.component />}
+                />
+              ))}
+              {privateRoutes.map((route: any, index: any) => (
+                <Route
+                  key={index}
+                  path={route.route}
+                  element={
+                    <AuthLayout >
+                        <route.component />
+                    </AuthLayout >
+                  }
+                />
+              ))}
+              {authRoutes.map((route: any, index: any) => (
+                <Route
+                  key={index}
+                  path={route.route}
+                  element={
+                    <LoggedInLayout >
+                      <route.component />
+                    </LoggedInLayout >
+                  }
+                />
+              ))}
+            </Routes>
+      </BrowserRouter>
     </div>
   );
 }
-
 export default App;
