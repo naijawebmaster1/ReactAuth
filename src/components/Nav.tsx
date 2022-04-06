@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Transition } from "@headlessui/react";
 import {Button} from "../partials/Button";
 import { Link } from "react-router-dom";
@@ -19,36 +19,6 @@ function Nav() {
               </div>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
-                  {/* <a
-                    href="#"
-                    className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Dashboard
-                  </a>
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Team
-                  </a>
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Projects
-                  </a>
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Calendar
-                  </a>
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Reports
-                  </a> */}
                 </div>
               </div>
             </div>
@@ -97,7 +67,7 @@ function Nav() {
               </button>
             </div>
             <div className="hidden md:grid grid-cols-2 gap-8 mb-4">
-              <div className="col-span-1">
+              <div data-aos="fade-up" className="col-span-1">
               <Link to="/register">              
                   <Button
                   loadingText={"Processing"}
@@ -106,7 +76,7 @@ function Nav() {
                   btnType={"secondary"}
                 /></Link>
               </div>
-              <div className="col-span-1">
+              <div data-aos="fade-down" className="col-span-1">
               <Link to="/login">              
                <Button
                   loadingText={"Processing"}
@@ -132,11 +102,11 @@ function Nav() {
             <div className="md:hidden" id="mobile-menu">
               <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <div className="col-span-1">
-              <Link to="/login">              
+              <Link to="/register">              
                <Button
                   loadingText={"Processing"}
                   // loading={loading} 
-                  text={"Login"}
+                  text={"Register"}
                   btnType={"primary"}
                 />
                 </Link>

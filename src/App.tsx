@@ -1,9 +1,19 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { publicRoutes, privateRoutes, authRoutes } from "./routers";
 import { AuthLayout, LoggedInLayout } from "./utility/AuthLayout";
+import { useState, useEffect } from "react";
 import './css/App.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
 function App() {
+  useEffect(() => {
+    AOS.init({
+      offset: 200,
+      duration: 300,
+      easing: 'ease-in-sine',
+      delay: 100,
+    });
+})
   return (
       <div>
       <BrowserRouter>

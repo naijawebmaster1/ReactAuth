@@ -1,15 +1,13 @@
 import { useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 // import { showToast } from "../dashboard/partials/Toaster"
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import swal from 'sweetalert'
 export const AuthLayout = ({ children }: any) => {
     const {Products, User}:any = useSelector((state) => state);
     let LoggedIn:any = false;
-
     LoggedIn = localStorage.getItem("User")
     console.log(LoggedIn)
-
     console.log(User.User, typeof User);
     const navigate = useNavigate();
     useEffect(() => {
@@ -22,6 +20,7 @@ export const AuthLayout = ({ children }: any) => {
               });            
               navigate("/login");
         }
+        
     }, [navigate]);
     return (
         <div className="auth-layout">
@@ -46,7 +45,7 @@ export const LoggedInLayout = ({ children }: any) => {
                 text: message,
                 icon: "success",
               });
-                          navigate("/dashboard");
+            // navigate("/dashboard");
         }else {
 
         }

@@ -9,7 +9,9 @@ import swal from 'sweetalert'
 import { useDispatch, useSelector } from "react-redux";
 import setProducts from "../Redux/Actions/ProductsActions";
 import productsReducer from "../Redux/Reducers/ProductsReducers";
+
 function Dashboard() {
+  const [productPage, setProductsPage] = useState(5)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const fetchProducts = async () => {
@@ -35,36 +37,43 @@ function Dashboard() {
   const { Products, User }: any = useSelector((state) => state);
   const state: any = useSelector((state) => state);
   console.log(state);
-  const allProducts = Products.Products.data;
-  let UserName: any = "false";
-  UserName = localStorage.getItem("User")
-
+  let allProducts = []
+  allProducts = Products.Products.data;
+  // const slicedProduct = allProducts.slice(0, productPage)
+  const getUserFromLocalStorage = () => {
+    try {
+        return JSON.parse(localStorage.getItem("User")|| '');
+    } catch (error) {
+        return null;
+    }
+};
+let UserData = getUserFromLocalStorage()
   return (
     <div>
       <div>
         <section className="bg-blue-900 py-10">
           <div className="md:grid grid-cols-4 gap-0 md:flex-wrap text-left md:text-left allign-left overflow-hidden mx-16">
             <div className="md:col-span-1 mt-10  text-center overflow-hidden">
-              <img
+          <Link to={"/"}>    <img
                 className="h-10 w-auto"
                 src="./img/rodufy.svg"
                 alt="Workflow"
-              />
+              /> </Link> 
             </div>
-            <div className="md:col-span-1 mt-10  text-center overflow-hidden">
+            <div className="md:col-span-1 mt-10  hidden md:block  text-center overflow-hidden">
             </div>
-            <div className="md:col-span-1 mt-10  text-center overflow-hidden">
+            <div className="md:col-span-1 mt-10   hidden md:block text-center overflow-hidden">
             </div>
-            <div className="md:col-span-1 mt-10  text-center overflow-hidden">
-              <h1 className="text-3xl font-semibold mt-10 md:mt-0 text-white leading-normal">{UserName ? UserName : "User Name"}</h1>
+            <div className="md:col-span-1 mt-10 text-center overflow-hidden">
+              <h1 className="text-3xl font-semibold mt-10 md:mt-0 text-white leading-normal">{UserData ? UserData?.profile?.name : "User Name"}</h1>
             </div>
           </div>
           <div className="md:grid grid-cols-4 gap-0 md:flex-wrap text-left md:text-left allign-left overflow-hidden mx-16">
-            <div className="md:col-span-1 mt-10  text-center overflow-hidden">
+            <div className="md:col-span-1 mt-10 hidden md:block text-center overflow-hidden">
             </div>
-            <div className="md:col-span-1 mt-10  text-center overflow-hidden">
+            <div className="md:col-span-1 mt-10 hidden md:block text-center overflow-hidden">
             </div>
-            <div className="md:col-span-1 mt-10  text-center overflow-hidden">
+            <div className="md:col-span-1 mt-10 hidden md:block text-center overflow-hidden">
             </div>
             <div className="md:col-span-1 mt-10  text-center overflow-hidden">
                 <Button
@@ -95,6 +104,19 @@ function Dashboard() {
                 </div>
               </div>))}
           </div>
+
+          <div className="md:w-1/4 mx-auto mt-10  text-center overflow-hidden">
+                <Button
+                onClick={
+                  () => {
+                    setProductsPage(productPage + 5)
+                  }
+                }
+                  loadingText={"Processing"}
+                  // loading={loading} 
+                  text={"Load More"}
+                  btnType={"secondary"}
+                />           </div>
         </section>
       </div>
     </div>
