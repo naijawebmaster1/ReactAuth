@@ -64,9 +64,9 @@ function Register() {
   return (
     <div>
       <section className="" style={{ backgroundImage: 'url("./assets/background/Pattern4.svg")' }}>
-        <div className="md:grid grid-cols-8 gap-0 md:flex-wrap text-center md:text-left allign-center overflow-hidden ">
+        <div className="lg:grid grid-cols-8 gap-0 md:flex-wrap text-center md:text-left allign-center overflow-hidden ">
 <Sidebar/>
-          <div className="md:col-span-6 pt-10 bg-gray-900  text-center overflow-hidden h-screen md:px-60 px-6">
+          <div className="md:col-span-6 pt-10 bg-gray-900  text-center overflow-hidden h-screen lg:px-60 md:px-40 px-6">
             <form onSubmit={formik.handleSubmit} className="mt-50 space-y-6 bg-white md:px-16 px-6 py-16 mx-auto my-auto rounded-xl" action="#" method="POST">
               <h1 className="text-3xl font-semibold mt-10 md:mt-0 text-blue-900 leading-normal mx-auto">Register</h1>
               <input type="hidden" name="remember" defaultValue="true" />

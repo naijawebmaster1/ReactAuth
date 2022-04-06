@@ -23,7 +23,8 @@ function PageNotFound() {
             <p className="mb-8 text-center text-gray-500 md:text-lg">
               The page you’re looking for doesn’t exist.
             </p>
-                    <div>
+<div className='flex justify-around'>
+<div className='mr-2'>
                     <Link to="/">              
                   <Button
                   loadingText={"Processing"}
@@ -31,7 +32,17 @@ function PageNotFound() {
                   text={"Go Home"}
                   btnType={"secondary"}
                 /></Link>
+{/* <Link to={{pathname: '/nextpath', state: { prevPath: this.props.location }}}>Example Link</Link>        */}
         </div>
+                    {/* <div>
+                    <Link to="/">              
+                  <Button
+                  loadingText={"Processing"}
+                  text={"Go Home"}
+                  btnType={"secondary"}
+                /></Link>
+        </div> */}
+</div>
           </div>
         </div>
       </div>

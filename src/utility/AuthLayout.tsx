@@ -41,7 +41,7 @@ export const LoggedInLayout = ({ children }: any) => {
         if (LoggedIn) {
             const message = "You are already logged in";
             swal({
-                title: "!Oops.",
+                title: "Yay.",
                 text: message,
                 icon: "success",
               });

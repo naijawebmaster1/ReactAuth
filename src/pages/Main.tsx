@@ -54,9 +54,9 @@ function Main() {
             <p className=" md:hidden text-lg text-gray-300 mt-10">We would strive to achieve that through providing education and quality health</p>
             <p className=" hidden md:block text-lg text-gray-300 mt-10">We would strive to achieve that through providing <br /> education and quality health</p>
             <div className="flex-auto flex space-x-4 justify-center md:justify-start">
-              <div className="md:flex gap-8 mt-10">
+              <div className="lg:flex gap-8 mt-10 md:pb-10">
                 <div className="col-span-4 pt-4">
-                  <h1 className="text-2xl font-semibold mt-4 md:mt-0">DOWNLOAD APP</h1>
+                  <h1 className="text-2xl font-semibold mt-4 md:mt-0 md:pb-10">DOWNLOAD APP</h1>
                 </div>
                 <div className="flex justify-between mt-10 md:mt-0">
                   <div className="pr-4">
@@ -89,7 +89,19 @@ function Main() {
       <section className="bg-white py-10">
         <div className="md:grid grid-cols-2 gap-0 md:flex-wrap text-center md:text-left allign-center overflow-hidden md:mx-16 mx-6">
           <div data-aos="fade-right" className="md:col-span-1 overflow-hidden text-white mt-auto mb-auto ">
-            <h1 className="md:text-5xl text-3xl font-semibold mt-10 md:mt-0 text-blue-900 leading-normal">Everything you’ll <br /> need to <span className="text-red-900 underline decoration-white leading-10">excel</span>  in life</h1>
+            {/* <h1 className="md:text-5xl text-3xl font-semibold mt-10 md:mt-0 text-blue-900 leading-normal">Everything you’ll <br /> need to <span className="text-red-900 underline decoration-white leading-10">excel</span>  in life</h1> */}
+
+            <h1 data-aos="fade-left" className="md:text-5xl text-3xl text-blue-900 mb-10 font-semibold mt-6 md:mt-0 md:leading-loose leading-none">Everything you’ll need to <span className="text-red-900 underline decoration-blue-900 leading-10 inline">
+              <Typewriter
+                //@ts-ignore
+                className="mt-6 text-lg inline"
+                options={{
+                  strings: ["Excel In Life", "Prosper And Flourish"],
+                  autoStart: true,
+                  loop: true,
+                }}
+              />
+            </span> </h1>
             <p className=" md:hidden text-lg text-blue-900 mt-10">We’ve curated a list of valuable resources to get you going in life, all for free!</p>
             <p className=" hidden md:block text-lg text-blue-900 mt-10">We’ve curated a list of valuable resources to get <br /> you going in life, all for free!</p>
             <div className="md:w-3/4">
