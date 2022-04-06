@@ -11,7 +11,7 @@ import setProducts from "../Redux/Actions/ProductsActions";
 import productsReducer from "../Redux/Reducers/ProductsReducers";
 
 function Dashboard() {
-  const [productPage, setProductsPage] = useState(5)
+  const [productPage, setProductsPage] = useState(4)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const fetchProducts = async () => {
@@ -37,9 +37,11 @@ function Dashboard() {
   const { Products, User }: any = useSelector((state) => state);
   const state: any = useSelector((state) => state);
   console.log(state);
-  let allProducts = []
-  allProducts = Products.Products.data;
-  // const slicedProduct = allProducts.slice(0, productPage)
+  let {data} = Products.Products;
+  if (data == null){
+    data = []
+  }
+  const slicedProduct = data.slice(0, productPage)
   const getUserFromLocalStorage = () => {
     try {
         return JSON.parse(localStorage.getItem("User")|| '');
@@ -93,7 +95,7 @@ let UserData = getUserFromLocalStorage()
         </section>
         <section className="bg-gray-900 py-10">
           <div className="md:grid grid-cols-2 gap-0 md:flex-wrap text-center md:text-left allign-center overflow-hidden md:mx-16 mx-6">
-            {allProducts?.map((value: any, index: any) => (
+            {slicedProduct?.map((value: any, index: any) => (
               <div key={index} className="md:col-span-1 overflow-hidden text-white mt-auto mb-auto md:w-3/4 mx-auto cursor-pointer">
                 <div className=" text-center md:text-left allign-center ">
                   <div className=" pt-44 my-auto mt-10 p-20 text-center overflow-hidden h-60 rounded-xl" style={{ backgroundImage: `url(${value.metaImageUrl})` }}>
@@ -105,16 +107,16 @@ let UserData = getUserFromLocalStorage()
               </div>))}
           </div>
 
-          <div className="md:w-1/4 mx-auto mt-10  text-center overflow-hidden">
+          <div className="md:w-1/4 md:mx-auto mt-10  text-center overflow-hidden mx-6">
                 <Button
                 onClick={
                   () => {
-                    setProductsPage(productPage + 5)
+                    setProductsPage(productPage + 4)
                   }
                 }
                   loadingText={"Processing"}
                   // loading={loading} 
-                  text={"Load More"}
+                  text={"Click to Load More"}
                   btnType={"secondary"}
                 />           </div>
         </section>
