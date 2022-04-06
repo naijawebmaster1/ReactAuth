@@ -81,8 +81,29 @@ function Dashboard() {
                 onClick={
                   () => {
                     localStorage.setItem("User", "");
-                    swal("Great", "You Logged Out Successfully", "success");
-                    setTimeout(function () { navigate("/login") }, 1000);
+                    const fetchProducts = async () => {
+                      const headers = {
+                        'Authorization': 'Bearer my-token',
+                        'My-Custom-Header': ''
+                      };
+                      const response = await axios
+                        .get("https://www.giropay.xyz/api/v1/giro-app/auth/logout")
+                        .then(response => {
+                          swal("Great", "You Logged Out Successfully", "success");
+                          setTimeout(function () { navigate("/login") }, 1000);
+                        })
+                        .catch((err) => {
+                          console.log("Err: ", err);
+                          swal({
+                            title: "!Oops.",
+                            text: "An Error Occured While Logging Out. Reload Page",
+                            icon: "warning",
+                          });
+                        });
+                    };
+                    // useEffect(() => {
+                    fetchProducts();
+                    // }, []);
                   }
                 }
                 loadingText={"Processing"}
@@ -95,23 +116,23 @@ function Dashboard() {
         <section className="bg-gray-900 py-10">
           <div className="md:grid grid-cols-1 gap-0 md:flex-wrap text-center md:text-left allign-center overflow-hidden md:mx-16 mx-6">
             <div className="">
-              <Carousel />
+                <Carousel />
             </div>
           </div>
         </section>
         <section className="bg-gray-900 py-10">
           <div className="mx-16">
-          <img
-                className="w-5 inline mr-2"
-                src="./img/up.svg"
-                alt="Workflow"
-              />
-      <h2 className=" inline text-xl leading-8 font-semibold mb-12 text-slate-700">
-      Trending
+            <img
+              className="w-5 inline mr-2"
+              src="./img/up.svg"
+              alt="Workflow"
+            />
+            <h2 className=" inline text-xl leading-8 font-semibold mb-12 text-slate-700">
+              Trending
             </h2>
           </div>
           <div className="md:grid grid-cols-2 gap-0 md:flex-wrap text-center md:text-left allign-center overflow-hidden md:mx-16 mx-6">
-            
+
             {slicedProduct?.map((value: any, index: any) => (
               <div key={index} className="md:col-span-1 overflow-hidden text-white mt-auto mb-auto md:w-3/4 mx-auto cursor-pointer">
                 <div className=" text-center md:text-left allign-center ">

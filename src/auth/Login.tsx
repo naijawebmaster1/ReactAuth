@@ -40,7 +40,8 @@ function Login() {
           }
           dispatch(RegisterUser(response.data));
           localStorage.setItem("User", JSON.stringify(response.data));
-          console.log(response.data.profile.name)
+          localStorage.setItem("Token", JSON.stringify(response.data.token));
+          console.log(response.data.token)
           swal("Success", "Login Successful", "success");
                 //@ts-ignore
            setTimeout(function () { navigate("/dashboard") }, 1000);
